@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+  db:
+    image: mariadb
+    command: --max-allowed-packet=64MB
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=ingimar
+    env_file:
+      - ./.db.env
+
+  app:
+    image: matomo
+    restart: always
+    volumes:
+      - ./config.ini.php:/var/www/html/config/config.ini.php
+#     - ./config:/var/www/html/config
+#     - ./logs:/var/www/html/logs
+      - matomo:/var/www/html
+    environment:
+            - MATOMO_DATABASE_HOST:db
+            - VIRTUAL_HOS:matomo.dina-system.org
+    env_file:
+      - ./.db.env
+        # ports:
+        # - 8080:80
+
+volumes:
+  db:
+  matomo:
+
+networks:
+  default:
+    external:
+       name: docker-compose_default
