@@ -5,6 +5,7 @@
 - https://www.digitalocean.com/community/tutorials/how-to-install-matomo-web-analytics-on-ubuntu-20-04 
 
 ## standalone proxy
+- the cerificates are in the 'certs'-folder
 
 ### docker-compose.yml
 
