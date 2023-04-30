@@ -1,4 +1,6 @@
 # matomo-analytics
+- Matomo is running with a standalone proxy
+- docker network is ->  ```  docker network create -d bridge proxy_default ```
 
 
 ## inspired by
